@@ -293,7 +293,7 @@ It demonstrates why classical encryption algorithms with small key spaces are vu
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Author-
 
 **Gautam Bisht**
 
