@@ -297,7 +297,7 @@ It demonstrates why classical encryption algorithms with small key spaces are vu
 
 **Gautam Bisht**
 
-GitHub: [@Gautambisht86525](https://github.com/Gautambisht86525)
+GitHub: [@Gautambisht86525](https://github.com/Gautambisht98)
 
 ---
 
