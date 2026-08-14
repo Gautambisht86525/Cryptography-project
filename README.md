@@ -1,6 +1,6 @@
 # 🔐 Caesar Cipher Brute-Force Attack Simulator
 
-An interactive web-based project that demonstrates how the **Caesar Cipher** works and how its small key space makes it vulnerable to a **brute-force attack**.
+An interactive web-based cryptography project that demonstrates how the **Caesar Cipher** works and how its small key space makes it vulnerable to a **brute-force attack**.
 
 The project allows users to encrypt a message using a Caesar Cipher and then visually simulate an attacker trying every possible key to recover the original plaintext.
 
@@ -8,40 +8,101 @@ The project allows users to encrypt a message using a Caesar Cipher and then vis
 
 ## 📌 About the Project
 
-The **Caesar Cipher Brute-Force Attack Simulator** is an educational cryptography project designed to demonstrate both **Caesar Cipher encryption** and its vulnerability to **brute-force attacks**.
+The **Caesar Cipher Brute-Force Attack Simulator** is an educational project developed to demonstrate the fundamentals of classical cryptography and brute-force attacks.
 
-The user first enters a plaintext message and selects an encryption key between **1 and 25**. The application encrypts the message using the Caesar Cipher.
+The application follows two main stages:
 
-After encryption, a simulated attacker attempts to decrypt the ciphertext by testing every possible key.
+1. **Encryption** — The user enters plaintext and selects a Caesar Cipher key.
+2. **Brute-Force Attack** — The simulator attempts every possible key from **1 to 25** and displays the resulting decryptions.
 
-Each attempt is displayed on the screen so that the brute-force process can be observed step by step.
+The application provides a visual representation of the attack process, including the current key, decrypted message, number of attempts, elapsed time, and attack progress.
 
 ---
 
 ## ✨ Features
 
-* 🔒 Encrypt plaintext using the Caesar Cipher
-* 🔑 Select an encryption key from **1–25**
-* ⚔️ Simulate a brute-force attack
-* 🔄 Test all possible Caesar Cipher keys
-* 🔍 Display every decryption attempt
-* ✅ Highlight the correct decrypted message
-* ⚠️ Detect text that may resemble English
-* 📊 Display attack progress
-* ⏱️ Track elapsed attack time
-* 🔢 Count the number of attempts
+* 🔒 Caesar Cipher encryption
+* 🔓 Caesar Cipher decryption
+* 🔑 Encryption key selection from **1–25**
+* ⚔️ Brute-force attack simulation
+* 🔄 Automatic testing of possible keys
+* 🔍 Display of every decryption attempt
+* ✅ Identification of the correct plaintext
+* ⚠️ Basic English-text detection
+* 📊 Real-time attack progress
+* ⏱️ Attack time tracking
+* 🔢 Attempt counter
 * 🎚️ Adjustable attack speed
-* ⏹️ Start and stop the attack simulation
+* ⏹️ Start/Stop attack controls
 * 📱 Responsive web interface
-* 🌐 Runs completely inside the browser
 
 ---
 
-## ⚙️ How It Works
+## 🔐 What is a Caesar Cipher?
 
-### 1. Enter the Plaintext
+The **Caesar Cipher** is a classical substitution cipher in which each letter of the plaintext is shifted by a fixed number of positions in the alphabet.
 
-The user enters a message that they want to encrypt.
+For example, using a shift of `3`:
+
+```text
+A → D
+B → E
+C → F
+...
+X → A
+Y → B
+Z → C
+```
+
+Therefore:
+
+```text
+HELLO WORLD
+```
+
+becomes:
+
+```text
+KHOOR ZRUOG
+```
+
+The number `3` is the encryption key.
+
+---
+
+## ⚔️ What is a Brute-Force Attack?
+
+A **brute-force attack** attempts to discover the correct key by trying all possible keys.
+
+Since the Caesar Cipher has only **25 non-trivial possible shifts**, an attacker can easily test every key.
+
+The simulator performs this process automatically:
+
+```text
+Encrypted Message
+       ↓
+    Try Key 1
+       ↓
+    Try Key 2
+       ↓
+    Try Key 3
+       ↓
+      ...
+       ↓
+   Try Key 25
+       ↓
+Correct Plaintext
+```
+
+This demonstrates why the Caesar Cipher is considered insecure for modern applications.
+
+---
+
+## ⚙️ How the Project Works
+
+### Step 1 — Enter Plaintext
+
+The user enters a message.
 
 Example:
 
@@ -49,9 +110,13 @@ Example:
 HELLO WORLD
 ```
 
-### 2. Select an Encryption Key
+### Step 2 — Select Encryption Key
 
-The user selects a Caesar Cipher shift between **1 and 25**.
+The user chooses a key between:
+
+```text
+1 – 25
+```
 
 For example:
 
@@ -59,105 +124,98 @@ For example:
 Key = 3
 ```
 
-### 3. Encrypt the Message
+### Step 3 — Encrypt
 
-Each alphabetic character is shifted according to the selected key.
+The application applies the Caesar Cipher:
+
+```text
+HELLO WORLD
+     ↓
+KHOOR ZRUOG
+```
+
+### Step 4 — Start Brute-Force Attack
+
+The simulated attacker starts testing possible keys.
 
 For example:
 
 ```text
-Plaintext:
-HELLO WORLD
-
-Key:
-3
-
-Ciphertext:
-KHOOR ZRUOG
-```
-
-### 4. Launch the Brute-Force Attack
-
-The attacker does not need to know the original encryption key.
-
-Instead, the simulator tries every possible key:
-
-```text
-Key 1  → Decryption Attempt
-Key 2  → Decryption Attempt
-Key 3  → Decryption Attempt
+Key 1  → Attempt
+Key 2  → Attempt
+Key 3  → Attempt
+Key 4  → Attempt
 ...
-Key 25 → Decryption Attempt
+Key 25 → Attempt
 ```
 
-Eventually, one of the keys produces the original plaintext.
+### Step 5 — Analyze Results
 
----
+Each result is evaluated and displayed.
 
-## 🔍 Result Classification
+The application can identify:
 
-The application visually classifies each decryption attempt.
-
-### ✅ Correct Match
-
-The decrypted text matches the original plaintext.
-
-### ⚠️ Looks Like English
-
-The result contains words or patterns that may resemble English text according to the project's basic heuristic.
-
-### ❌ Not English
-
-The decrypted output does not appear to contain recognizable English patterns.
+* ✅ **Correct Match**
+* ⚠️ **Looks Like English**
+* ❌ **Not English**
 
 ---
 
 ## 📊 Attack Statistics
 
-During the brute-force attack, the simulator displays:
+While the attack is running, the interface displays:
 
-* Number of attempted keys
-* Time elapsed
-* Number of correct matches found
-* Current key being tested
-* Current decrypted text
-* Overall attack progress
-
-A progress bar visually represents the brute-force process.
+| Statistic      | Description                   |
+| -------------- | ----------------------------- |
+| Attempts       | Number of keys tested         |
+| Time           | Time taken by the attack      |
+| Found          | Number of correct matches     |
+| Progress       | Percentage of keys tested     |
+| Current Key    | Key currently being tested    |
+| Decrypted Text | Result of the current attempt |
 
 ---
 
-## 📁 Project Structure
+## 🧠 English Text Detection
+
+The simulator includes a simple heuristic to determine whether a decrypted message may resemble English.
+
+It checks the decrypted text for common English words such as:
 
 ```text
-Cryptography-project/
-│
-├── CODE/
-│   └── index.html
-│
-└── README.md
+THE
+AND
+FOR
+ARE
+YOU
+NOT
+ALL
+CAN
+ONE
+OUR
 ```
 
-The entire application is currently implemented inside a single `index.html` file containing the HTML, CSS, and JavaScript.
+This is only an **educational heuristic** and is not a complete cryptanalysis or language-processing system.
 
 ---
 
-## 💻 Technologies Used
+## 🛠️ Technologies Used
 
 ### HTML5
 
-Used to create the structure and elements of the web application.
+Used to build the structure of the web application.
 
 ### CSS3
 
 Used for:
 
-* Interface styling
-* Responsive layout
+* User interface design
+* Layout
 * Buttons
-* Result highlighting
 * Progress bar
-* Attack statistics
+* Statistics cards
+* Result highlighting
+* Responsive design
 
 ### JavaScript
 
@@ -165,142 +223,190 @@ Used to implement:
 
 * Caesar Cipher encryption
 * Caesar Cipher decryption
-* Brute-force attack simulation
+* Brute-force attack
 * Key testing
-* English-text heuristic
+* English-text detection
 * Attack timing
 * Progress calculation
+* Statistics
 * DOM manipulation
-* Attack statistics
+* Start/Stop functionality
 
 ---
 
-## 🚀 How to Run the Project
+## 📁 Project Structure
 
-No backend, database, framework, or package installation is required.
-
-### Step 1 — Clone the Repository
-
-```bash
-git clone https://github.com/Gautambisht86525/Cryptography-project.git
+```text
+CaesaCipher-Brute-Force-Attack-Simulator/
+│
+├── CODE/
+│   └── index.html
+│
+└── README.md
 ```
 
-### Step 2 — Open the Project
+---
 
-```bash
-cd Cryptography-project
-```
+## 🚀 How to Run
 
-### Step 3 — Open
+This project is completely client-side and does not require:
+
+* Backend server
+* Database
+* External libraries
+* Package installation
+
+### Method 1 — Open Directly
+
+1. Clone the repository.
+2. Open the project folder.
+3. Navigate to:
 
 ```text
 CODE/index.html
 ```
 
-in any modern web browser.
+4. Open `index.html` in a web browser.
 
-You can also open the project using **Visual Studio Code** and run `index.html` using a local development extension such as Live Server.
+### Method 2 — Using Visual Studio Code
+
+1. Open the project in **Visual Studio Code**.
+2. Open:
+
+```text
+CODE/index.html
+```
+
+3. Run it in your browser.
+
+You can also use the **Live Server** extension for a local development server.
 
 ---
 
 ## 🧪 Example
 
-Suppose the user enters:
+### Input
+
+```text
+Plaintext:
+HELLO WORLD
+
+Encryption Key:
+3
+```
+
+### Encryption
 
 ```text
 HELLO WORLD
-```
-
-and selects:
-
-```text
-Encryption Key = 3
-```
-
-The Caesar Cipher produces:
-
-```text
+     ↓
 KHOOR ZRUOG
 ```
 
-The brute-force simulator then tests the possible keys until the original message is recovered.
+### Brute-Force Simulation
 
-When the correct shift is tested:
-
-```text
-HELLO WORLD
-```
-
-is displayed as:
+The application starts trying different keys:
 
 ```text
-✅ CORRECT MATCH!
+Key 1 → JGNNQ YQTNF
+Key 2 → IFMMP XPSME
+Key 3 → HELLO WORLD ✅
+...
 ```
+
+The correct plaintext is highlighted when the simulator reaches the appropriate key.
 
 ---
 
-## 🧠 What This Project Demonstrates
+## 🎯 Objective
 
-The project demonstrates an important concept in cryptography:
+The main objective of this project is to demonstrate:
 
-> A cipher with a very small key space can be vulnerable to exhaustive brute-force searching.
-
-The Caesar Cipher has only a small number of possible shifts. Therefore, an attacker can simply try every possible key until meaningful plaintext is obtained.
-
-This is one of the reasons why the Caesar Cipher should **not** be used for real-world secure communication.
+* How the Caesar Cipher encrypts data
+* How encryption keys work
+* How decryption can recover the original message
+* How brute-force attacks work
+* Why small key spaces are insecure
+* How cryptographic concepts can be visualized using a web application
 
 ---
 
-## 🎯 Learning Outcomes
+## 🎓 Learning Outcomes
 
-Through this project, you can understand:
+After working with this project, you can understand:
 
-* Basic cryptography concepts
+* Fundamentals of cryptography
+* Classical substitution ciphers
 * Caesar Cipher encryption
 * Caesar Cipher decryption
-* Substitution ciphers
-* Encryption keys
 * Brute-force attacks
 * Exhaustive key searching
-* Weakness of small key spaces
+* Key-space security
 * Basic cryptanalysis concepts
-* JavaScript-based algorithm simulation
+* JavaScript algorithm implementation
 * DOM manipulation
-* Interactive web application development
+* Interactive web development
 
 ---
 
 ## ⚠️ Limitations
 
-This project is designed primarily for **educational demonstration**.
+This project is intended for **educational purposes only**.
 
 Current limitations include:
 
 * Only the Caesar Cipher is implemented.
-* The brute-force attack checks Caesar keys from **1–25**.
+* The brute-force attack checks keys from **1 to 25**.
 * English detection uses a basic word-based heuristic.
 * It is not a complete cryptanalysis system.
-* Exact-match detection compares the attempted plaintext with the original plaintext stored by the application.
-* It should not be used for protecting sensitive or confidential information.
+* The exact correct-match check uses the original plaintext stored by the application.
+* It should not be used to protect confidential or sensitive information.
 
 ---
 
-## 🎓 Educational Purpose
+## 🔒 Security Note
 
-This project was developed to understand the fundamentals of **cryptography, Caesar Cipher encryption, decryption, and brute-force attacks** through an interactive visual simulation.
+The Caesar Cipher is **not secure for real-world communication** because its key space is extremely small.
 
-It demonstrates why classical encryption algorithms with small key spaces are vulnerable to exhaustive attacks.
+Modern secure communication systems use significantly stronger cryptographic algorithms with much larger key spaces and carefully designed security properties.
+
+This project should therefore be considered a **cryptography learning and visualization tool**, not a security product.
 
 ---
 
-## 👨‍💻 Author-
+## 📚 Concepts Demonstrated
+
+```text
+Cryptography
+     │
+     ├── Caesar Cipher
+     │      ├── Encryption
+     │      └── Decryption
+     │
+     └── Cryptanalysis
+            │
+            └── Brute-Force Attack
+                   ├── Key Testing
+                   ├── Plaintext Recovery
+                   └── Result Analysis
+```
+
+---
+
+## 👨‍💻 Author
 
 **Gautam Bisht**
 
-GitHub: [@Gautambisht86525](https://github.com/Gautambisht98)
+GitHub: [@Gautambisht98](https://github.com/Gautambisht98)
+
+---
+
+## ⭐ Acknowledgement
+
+This project was created as an educational implementation to understand the working principles of **classical cryptography and brute-force attacks** through an interactive web interface.
 
 ---
 
 ## ⭐ Support
 
-If you found this project useful for learning cryptography, consider giving the repository a **star ⭐**.
+If you found this project useful for learning, consider giving the repository a **star ⭐**.
